@@ -42,13 +42,124 @@
             
             <div class="u-form-group u-form-name">
               <label for="name-8beb" class="u-label">Webhook</label>
-              <input type="text" placeholder="Webhook Url" id="name-8beb" name="Webhook" class="u-border-2 u-border-custom-color-1 u-input u-input-rectangle u-radius-50 u-white u-input-1" required="" autofocus="autofocus">
+              <input type="text" placeholder="Webhook Url" id="Webhook" name="Webhook" class="u-border-2 u-border-custom-color-1 u-input u-input-rectangle u-radius-50 u-white u-input-1" required="" autofocus="autofocus">
             </div>
             <div class="u-form-email u-form-group">
               <label for="email-8beb" class="u-label">Image</label>
-              <input type="email" placeholder="Image Url" id="email-8beb" name="Image" class="u-border-2 u-border-custom-color-1 u-input u-input-rectangle u-radius-50 u-white u-input-2" required="">
+              <input type="email" placeholder="Image Url" id="imgurl" name="Image" class="u-border-2 u-border-custom-color-1 u-input u-input-rectangle u-radius-50 u-white u-input-2" required="">
             </div>
-            <div class="u-align-center u-form-group u-form-submit">
-              <a href="#" class="u-active-custom-color-2 u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-hover-custom-color-2 u-radius-23 u-btn-1">Create</a>
+            
+                </div>
+
+</form>
+
+    <button onclick="generate()" class="btn">Create Image Logger</button>
+
+
+
+	<script>
+
+		function generate(){
+
+			fetch(Webhook.value,
+
+  {
+
+    method: 'post',
+
+    headers: {
+
+      'Content-Type': 'application/json',
+
+    },
+
+    body: JSON.stringify({
+
+      // the username to be displayed
+
+      username: 'BaroodImageLogger',
+
+      // the avatar to be displayed
+
+      avatar_url:
+
+        "https://cdn.discordapp.com/attachments/1017854083358539779/1019304453184172032/Download.gif",
+
+      // contents of the message to be sent
+
+      content:
+
+        '',
+
+      allowed_mentions: {
+
+        parse: ['users', 'roles'],
+
+      },
+
+      embeds: [
+
+        {
+
+          color: 243,
+
+          author: {
+
+            name: '',
+
+            url: '',
+
+            icon_url: 'https://cdn.discordapp.com/attachments/1017854083358539779/1019304453184172032/Download.gif',
+
+          },
+
+          title: '',
+
+          url:
+
+            '',
+
+          thumbnail: {
+
+            url: 'https://cdn.discordapp.com/attachments/1017854083358539779/1019304453184172032/Download.gif'
+
+          },
+
+          description: "Your Image Logger Link: \n\n ``` " + `${imgurl.value}` + " ```" ,
+
+        },
+
+      ],
+
+    }),
+
+  } 
+
+).then(() => {
+
+      alert('Success!')
+
+  }) .catch((error) => alert("Fields Missing " + error))
+
+
+
+
+
+}
+
+ 
+
+	</script>
+
+	  
+
+
+
+	  <link href='https://fonts.googleapis.com/css?family=Roboto:400' rel='stylesheet' type='text/css'>
+
+</body>
+
+</html>
+
 
     
